@@ -1,0 +1,47 @@
+/* File này code những thành phần cấu hình chung */
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+}
+
+* {
+    /* 'inhnerit' là kế thừa thẻ chứa nó */
+    box-sizing: inherit;
+
+}
+
+html {
+    /* Mặc định font-size nếu để 100% là 16px, nếu có thẻ nào dùng font-size là 1rem nghĩa là = 16px */
+    /* Giả sử muốn font-size giá trị 12px thì có 1 cách đó là để font size = 62,5%. Nếu ta muốn 
+    nó là 12px thì ghi là 1.2rem, nếu muốn 16px thì để là 1.6rem và cứ thế mà làm */
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    /* Dòng này cũng copy từ google font sau khi chọn các chủng font */
+    font-family: 'Roboto', sans-serif;
+    /* 'box-sizing: inherit' để cho nó kế thừa lại những thẻ chứa nó có thuộc tính box-sizing,
+    vì html là thẻ to nhất nên tất cả những thăng có trong thẻ html đều kế thừa 'box-sizing: border-box' */
+    box-sizing: border-box;
+}
+
+.grid {
+    /* Đặt width 1200px và max-width 100% nhằm mục đích là nếu màn hình lớn hơn 1200px thì max-width tối
+    đa nó chỉ là 1200px, nhưng nếu màn hình < 1200px thì max-width nó sẽ giảm kích thước màn hình
+    bằng kích thước màn hình < 1200px */
+    width: 1200px;
+    max-width: 100%;
+    /* Để căn giữa 1 khối khi nằm trong khối khác thì margin: 0 auto */
+    margin: 0 auto;
+}
+
+.grid__full-width {
+    /* Nếu không muốn sử dụng width: 1200px như trên thì dùng class này */
+    width: 100%;
+}
+
+.grid__row {
+    /* Những thẻ chứa nằm trong thẻ có class này đều nằm ngang */
+    display: flex;
+    /* Nếu độ dài vượt quá grid row này thì tự xuống hàng */
+    flex-wrap: wrap;
+}
