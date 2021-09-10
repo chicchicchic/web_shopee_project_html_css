@@ -45,3 +45,13 @@ html {
     /* Nếu độ dài vượt quá grid row này thì tự xuống hàng */
     flex-wrap: wrap;
 }
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
