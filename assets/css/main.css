@@ -21,9 +21,14 @@
     position: relative;
 }
 
+
 /* Khi hover vào thẻ cha thì các thuộc tính Css trong đây sẽ áp dụng cho 'header__qr' (con),
 phần này sẽ show .header__qr khi hover vào .header__navbar-item--has-qr */
 .header__navbar-item--has-qr:hover .header__qr {
+    display: block;
+}
+
+.header__navbar-item--has-notify:hover .header__notify {
     display: block;
 }
 
@@ -120,7 +125,125 @@ nên trường hợp này ta dùng 1 lớp giả để làm cầu vô hình nố
 
 }
 
+/* Header notifycation */
+.header__notify {
+    position: absolute;
+    top: 132%;
+    right: 0;
+    width: 404px;
+    border: 1px solid #D3D3D3;
+    background-color: var(--white-color);
+    cursor: default;
+    /* transform-origin để xét trọng tân khi thông báo hiện lên thay vì như mặc định là nó
+    chỉ hiện lên mà không có trọng tâm xuất phát, vì animation hiện thông báo của mình là kiểu zoom lên từ 1 điểm */
+    /* 100% - 20px nghĩa là để sau này mà chiều rộng hay cao của khung thông báo có thay đổi thì animation nó 
+    vẫn hiện đúng điểm trọn tâm đó */
+    /* dùng 'calc(100% - 20px)' nghĩa là chiều rộng của thanh thông báo là 100% thì trừ bớt tầm
+    20px nghĩa là điểm đó cách góc right=0 tầm 20px, và top là phía trên. Tổng hợp của 2 điều này thì
+    điểm xuất phát trọng tâm là từ góc phải và từ trên xuống theo hướng xéo  */
+    transform-origin: calc(100% - 20px) top;
+    animation: headerNotifyGrowth ease-in 0.2s;
+    display: none;
+}
+
+/* Animation hiện thông báo kiểu lớn dần lên */
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        /* scale là độ phóng to/thu nhỏ, ban đầu thì cho bằng 0 để hiện từ nhỏ tới lớn*/
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        /* Hiện full */
+        transform: scale(1);
+    }
+}
+
+.header__notify-header {
+    height: 40px;
+    background-color: var(--white-color);
+
+}
+
+.header__notify-header h3 {
+    color: #999;
+    margin: 0 0 0 12px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 40px;
+    /* Không cho User copy lun, vì nó chỉ là dòng thông báo text */
+    user-select: none;
+}
+
+.header__notify-list {
+    padding-left: 0;
+}
+
+.header__notify-item {
+    display: flex;
+}
+
+/* HOver vào thẻ nào thì thẻ đó đổi màu */
+.header__notify-item:hover {
+    background-color: #f7f7f7;
+}
+
+.header__notify-item--viewed {
+    background-color: rgba(238, 77, 45, 0.08);
+}
+
+.header__notify-link {
+    display: flex;
+    padding: 12px;
+    text-decoration: none;
+    /* Vì nó chưa chiếm hết chiều ngang nên cho width 100% */
+    width: 100%;
+}
+
+.header__notify-img {
+    width: 48px;
+    /* Để cho ảnh không bị méo so với ban đầu (Nếu là ảnh hình chữ nhật sẽ thấy thay đổi, còn ảnh mình là ảnh vuông */
+    object-fit: contain;
+}
+
+.header__notify-info {
+    margin-left: 12px;
+}
+
+.header__notify-name {
+    /* Cho nó tính chất khối để xuống hàng */
+    display: block;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    font-weight: 400;
+    line-height: 1.8rem;
+}
+
+.header__notify-description {
+    /* Cho nó tính chất khối để xuống hàng */
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: #756F6E;
+    margin-top: 4px;
+}
 
 
+/* Notify footer */
+.header__notify-footer {
+    display: flex;
+}
 
-
+.header__notify-footer-btn {
+    text-decoration: none;
+    color: var(--text-color);
+    /* padding trên dưới thì theo design, nhưng trái phải cho nó
+    rộng 100% thẻ chứa nó (footer) để mở rộng vùng bấm cho Users, lúc này thì miễn trong thẻ 
+    footer thì Users bấm chỗ nào cũng xem được tất cả thông báo */
+    width: 100%;
+    padding: 8px 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+}

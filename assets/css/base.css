@@ -1,5 +1,6 @@
 /* File này code những thành phần cấu hình chung */
 :root {
+    --primary-color: #EE4D2D;
     --white-color: #fff;
     --black-color: #000;
     --text-color: #333;
