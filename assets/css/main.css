@@ -74,7 +74,8 @@ phần này sẽ show .header__qr khi hover vào .header__navbar-item--has-qr */
     /* Thẻ cha có position relative là .header__navbar-item */
     position: absolute;
     left: 0;
-    /* top 100% là nó cao bằng thẻ chứa nó. Nên nó đứng sát mép dưới thăng cha chứa nó */
+    /* top 100% là nó cao bằng thẻ chứa nó. Nên nó đứng sát mép dưới thăng cha chứa nó, cách top
+    một khoảng bằng chiều cao thẻ chứa nó */
     /* Thêm 32% nữa để nó không dính sát vào mép dưới của hàng chữ (cha) nó */
     top: 132%;
     padding: 8px;
@@ -82,6 +83,8 @@ phần này sẽ show .header__qr khi hover vào .header__navbar-item--has-qr */
     /* Mặc định nó ẩn cho d8e61n khi hover vào thẻ cha nó thì nó mới hiện lên */
     display: none;
     animation: fadeIn ease-in 0.3s;
+    /* Cách giải thích giống class 'header__notify' */
+    will-change: opacity;
 }
 
 /* Vì khi ta thêm 32% trên .header__qr nên giữa nó và thằng cha nó cách nhau 1 khoảng trống,
@@ -143,7 +146,44 @@ nên trường hợp này ta dùng 1 lớp giả để làm cầu vô hình nố
     điểm xuất phát trọng tâm là từ góc phải và từ trên xuống theo hướng xéo  */
     transform-origin: calc(100% - 20px) top;
     animation: headerNotifyGrowth ease-in 0.2s;
+    /* Thêm cái này để nó tối ưu sự thay đổi của đối tượng có thuộc tính này (header__notify), Vì ta dùng 
+    animation nên ở đối tượng này có 2 sự thay đổi là opacity, transform nhìn thì nó không có sự khác biệt 
+    gì nhưng nên thêm nó vào */
+    will-change: opacity, transform;
     display: none;
+}
+
+/* Tạo hình tam giác (mủi tên) hướng từ notify lên nút 'Thông báo'. Dùng lớp giả để làm việc này, Vửa để làm giống shopee,
+vừa dùng lớp giả đó để Users di chuột từ nút thông báo d8e61n Notify (Bảng thông báo) */
+.header__notify::before {
+    content: "";
+    /* Giá trị đầu tiên là rộng, giá trị thứ hai là cao */
+    border-width: 20px 30px;
+    /* Kiểu border */
+    border-style: solid;
+    /* Cấu trúc thằng này là 4 mãnh tam giác ghép lại thành hình vuông nên set màu theo thứ tự 
+    top-right-bottom-left, vì ta cần tam giác hướng lên (bottom) nên chỉ thằng bottom cho màu, còn 
+    3 hướng còn lại là màu trong suốt (vô hình) */
+    border-color: transparent transparent var(--white-color) transparent;
+    position: absolute;
+    right: 5px;
+    top: -26px;
+}
+
+/* Vì lớp giả hình mũi tên bên trên không thể rộng hơn nữa vì sẽ biến dạng khác với design nên khi Users di chuột
+vào vùng mà lớp giả bên trên chưa phủ được thì bảng thông báo liền mất vì nút thông báo dài hơn chiều dài lớp giả
+mũi tên và giữa Nút thông báo và Notify lại có khoảng cách nên để tạo UX cho Users thì làm thêm 1 lớp giả có chiều 
+dài bằng chiều dài nút thông báo và điều chỉnh sao cho để lớp giả này là cầu nối giữa Nút thông báo và Notify thì
+ khi đó Users có di chuột xuống Notify như thế nào (Miễn trong giới hạn chiều dài nút thông báo) thì Notify không 
+còn bị mất do khoảng trống giữa Nút thông báo (Cha) với Notify(con) nũa  */
+.header__notify::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -5px;
+    top: -14px;
+    width: 90px;
+    height: 20px;  
 }
 
 /* Animation hiện thông báo kiểu lớn dần lên */
