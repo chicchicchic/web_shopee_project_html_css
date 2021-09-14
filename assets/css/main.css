@@ -1,7 +1,7 @@
 /* File này css những phần riêng */
 
 .header {
-    height: 120px;
+    height: var(--header-height);
     background-image: linear-gradient(0, #ff6533, #f63f2d);
 }
 
@@ -13,12 +13,13 @@
 .header__navbar-list {
     list-style: none;
     padding-left: 0;
-    margin-top: 4px;
+    margin: 4px 0 0 0;
 }
 
 .header__navbar-item {
     margin: 0 8px;
     position: relative;
+    min-height: 26px;
 }
 
 
@@ -427,3 +428,179 @@ border của ô input đó nó đổi sang màu mình muốn */
     /* Ghi đè màu class 'auth-form__help-link' */
     color: var(--primary-color);
 }
+
+
+
+/* Header with search */
+.header-with-search {
+    height: var(--header-with-search-height);
+    /* Cho logo nằm giữa chiều cao của class 'header-with-search' */
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+
+}
+
+.header__logo {
+    width: 200px;
+}
+
+.header__logo-img {
+    width: 150px;
+}
+
+.header__search {
+    flex: 1;
+    height: 40px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+
+    display: flex;
+    align-items: center;
+}
+
+.header__cart {
+    width: 150px;
+    /* Căn giữa thẻ con trong class 'header__cart' (logo cart) */
+    text-align: center;
+}
+
+.header__cart-icon {
+    font-size: 2.2rem;
+    color: var(--white-color);
+    margin-top: 4px;
+}
+
+.header__search-input {
+    flex: 1;
+
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    padding: 0 16px;
+    /* Mặc dù đã border radius vào thẻ cha nó nhưng ta thấy nó không bo góc nên ta sẽ nghĩ
+    ngay là do thằng con nó bị chồi ra ngoài thẻ cha nó. Trường hợp này thường sẽ dùng 
+    overflow hidden nhưng ở đây không nên dùng vì đây là ô search, sau này nó sẽ hiện những
+    lịch sử tìm kiếm (con của header___search) mà nếu ta hidden thì sau này không hiện được,
+    nên trường hợp này ta border radius vào chính thẻ input này luôn */
+    border-radius: 3px;
+    
+}
+
+.header__search-select {
+    border-left: 1px solid #ccc;
+    padding-left: 16px;
+    position: relative;
+    cursor: pointer;
+}
+
+.header__search-select-label {
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.header__search-select-icon {
+    font-size: 1.4rem;
+    color: #4A4A4A;
+    margin: 0 16px 0 8px;
+    position: relative;
+    top: 1px;
+}
+
+.header__search-btn {
+    background-color: var(--primary-color);
+    border: none;
+    height: 34px;
+    width: 60px;
+    border-radius: 3px;
+    margin-right: 3px;
+    outline: none;
+}
+
+.header__search-btn:hover {
+    background-color: #f35d3f;
+    cursor: pointer;
+}
+
+.header__search-btn-icon {
+    font-size: 1.4rem;
+    color: var(--white-color);
+}
+
+.header__search-select:hover .header__search-option {
+    display: block;
+}
+
+.header__search-option {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    width: 130px;
+    list-style: none;  
+    box-shadow: 0 1px 2px #e0e0e0;
+    padding-left: 0;
+    border-radius: 3px;
+    /* Mặc định ẩn, hover vào mới hiện lên */
+    display : none;
+    animation: fadeIn ease-in 0.2s;
+}
+
+/* Thêm lớp giả để bắt cầu */
+.header__search-option::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 18px;
+    position: absolute;
+    top: -14px;
+    left: 0;
+}
+
+.header__search-option-item {
+    background-color: var(--white-color);
+    padding: 8px 8px;
+}
+
+/* Vì không over flow vào class 'header__search-option-item' do ảnh của nó làm cho lóp giả bắc cầu
+ 'header__search-option::after' không đặt được vị tí nên để bo góc phần option sổ xuống bằng cách
+ đặt lớp giả chọn thằng option đầu và cuối trong list option để bo góc (vì trong tương lai có
+ thể có nhiều option hơn khi sổ xuống */
+ /* Sau này nếu có thêm các option khác giữa 2 thằng đầu và cuối thì thằng đầu và cuối vẫn không ảnh 
+ hưởng gì phần bo góc */
+ /* first child thì bo góc trái phải phía trên */
+.header__search-option-item:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+/* last child thì bo góc trái phải phía dưới */
+.header__search-option-item:last-child {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.header__search-option-item:hover {
+    background-color: #f3efef;
+    cursor: pointer;
+}
+
+.header__search-option-item span {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-left: 8px;
+}
+
+.header__search-option-item i {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-left: 12px;
+    display: none;
+}
+
+.header__search-option-item--active i {
+    display: inline-block;
+}
+
+

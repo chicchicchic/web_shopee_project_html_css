@@ -5,6 +5,12 @@
     --black-color: #000;
     --text-color: #333;
     --border-color: #dbdbdb;
+
+    /* Đặt thêm phép tính này để sau này header hoặc navbar có thay đổi thì thằng search tự
+    động tính toán chiều cao */
+    --header-height: 120px;
+    --navbar-height: 34px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
 }
 
 * {
