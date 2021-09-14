@@ -4,6 +4,7 @@
     --white-color: #fff;
     --black-color: #000;
     --text-color: #333;
+    --border-color: #dbdbdb;
 }
 
 * {
@@ -79,12 +80,60 @@ html {
 
 .modal__body {
     /* Note: không cần set width height vì sau này thêm nội dung vào thì tự nó set width */
-    background-color: var(--white-color);
     /* Căn giũa trọng tâm màng hình */
     margin: auto;
     position: relative;
     /* Để cho nó nổi lên trên lớp mờ mờ */
     z-index: 1;
-    border-radius: 5px;
+    
 }
+
+
+/* Button style */
+.btn {
+    min-width: 142px;
+    height: 34px;
+    /* Đề phòng sau này có thẻ a dùng class này nên thêm text decoration: none */
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    /* Cho nó bỏ padding mặc định cho chử nó không bị lệch giũa 1 nút */
+    padding: 0 12px;
+    cursor: pointer;
+    color: var(--text-color);
+    /* Thêm vào để căn giữa class 'btn--size-s' */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Thằng nào có class 'btn--normal' thì mới đổi màu khi hover */
+.btn.btn--normal:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn--size-s {
+    height: 32px;
+    padding: 0 8px;
+    font-size: 12px;
+}
+
+/* Cách viết chấm liền như này là để css cho element có cả 2 class này, nếu có
+3 class thì chấm liền thêm 1 cái nữa và vân vân */
+.btn.btn--primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+/* Thêm 1 class để css nút kiểu như bị vô hiệu hóa, về sau backend làm thì sẽ có những nút hiển thì cho User
+biết là không nhấn vào được, sau này có element nào cần hiển thị là vô hiệu hóa thì thêm class
+này vào */
+.btn.btn--disabled {
+    color: #949494;
+    cursor: default;
+    background-color: #c3c3c3;
+}
+
+
 

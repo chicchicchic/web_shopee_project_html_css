@@ -137,9 +137,67 @@
         <div class="modal__overlay"></div>
         
         <div class="modal__body">
-            <!-- modal__inner để viết những thành phần riêng như form đăng ký/đăng nhập -->
-            <div class="modal__inner">
-                
+            <!-- Authen form -->
+
+            <!-- class 'authen-form' dùng cho cả login và register -->
+            <div class="auth-form">
+                <!-- Thêm 1 container cho nó theo design thì thành phần trong container này có điểm chung, khác
+                với phần socials bên dưới, thêm 1 container vào để dễ css hơn -->
+                <div class="auth-form__container">
+                    <!-- Phần header -->
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Register</h3>
+                        <span class="auth-form__switch-btn">Log In</span>
+                    </div>
+
+                    <!-- Phần form -->
+                    <div class="auth-form__form">
+                        <!-- Nên đặt thêm 1 thẻ bao từng thẻ input như này để sau này có thể update thêm từng label cho từng ô input -->
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Password">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Confirm Password">
+                        </div>
+                    </div>
+
+                    <!-- Phần chính sách -->
+                    <div class="auth-form__aside">
+                        <p class="auth-form__policy-text">
+                            Bằng việc đăng kí, bạn đã đồng ý với Khanh's Shop về
+                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a>
+                            &
+                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                        </p>
+                    </div>
+
+                    <!-- Phần controls -->
+                    <div class="auth-form__controls">
+                        <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+                        <button class="btn btn--primary">LOG IN</button>
+                    </div>
+                </div>
+
+
+                <!-- Phần socials -->
+                <div class="auth-form__socials">
+                    <a href="" class="auth-form__socials--facebook btn btn--size-s btn--with-icon">
+                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                        <span class="auth-form__socials-tiile">
+                            Kết nối với Facebook
+                        </span>
+                    </a>
+                    <a href="" class="auth-form__socials--google btn btn--size-s btn--with-icon">
+                        <i class="auth-form__socials-icon fab fa-google"></i>
+                        <span class="auth-form__socials-tiile">
+                            Kết nối với Google
+                        </span>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
