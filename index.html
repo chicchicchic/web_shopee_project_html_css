@@ -142,8 +142,30 @@
 
                     <!-- Search place -->
                     <div class="header__search">
-                        <!-- Input -->
-                        <input type="text" class="header__search-input" placeholder="Tìm kiếm sản phẩm">
+                        <!-- Cho ô input vào 1 thẻ Wrap vì vùng history nó không rông bằng width nên không thể Set cứng width cho nó vì sao 
+                        này nếu chiều rộng trình duyệt thay đổi sẽ có vấn đề-->
+                        <div class="header__search-input-wrap">
+                            <!-- Input -->
+                            <input type="text" class="header__search-input" placeholder="Tìm kiếm sản phẩm">
+
+                            <!-- Vùng hiện lịch sử tìm kiếm -->
+                            <div class="header__search-history">
+                                <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
+                                <ul class="header__search-histoty-list">
+                                    <li class="header__search-history-item">
+                                        <a href="">Nước sát trùng</a>
+                                    </li>
+
+                                    <li class="header__search-history-item">
+                                        <a href="">Kính chống giọt bắn</a>
+                                    </li>
+
+                                    <li class="header__search-history-item">
+                                        <a href="">Kem đánh răng</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <!-- Selection trong thanh search -->
                         <div class="header__search-select">

@@ -471,13 +471,20 @@ border của ô input đó nó đổi sang màu mình muốn */
     margin-top: 4px;
 }
 
-.header__search-input {
+.header__search-input-wrap {
+    /* flex: 1 theo trục main axits nhưng không kế thừa được trục cross axits nên thêm height 100%,
+    bây giờ thì đoạn placehoder nằm giữa ô input và không còn mất cân xứng theo trụ cross axits */
     flex: 1;
+    height: 100%;
+    position: relative;
+}
 
+.header__search-input {
+    width: 100%;
     height: 100%;
     border: none;
     outline: none;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--text-color);
     padding: 0 16px;
     /* Mặc dù đã border radius vào thẻ cha nó nhưng ta thấy nó không bo góc nên ta sẽ nghĩ
@@ -485,7 +492,7 @@ border của ô input đó nó đổi sang màu mình muốn */
     overflow hidden nhưng ở đây không nên dùng vì đây là ô search, sau này nó sẽ hiện những
     lịch sử tìm kiếm (con của header___search) mà nếu ta hidden thì sau này không hiện được,
     nên trường hợp này ta border radius vào chính thẻ input này luôn */
-    border-radius: 3px;
+    border-radius: 2px;
     
 }
 
@@ -514,7 +521,7 @@ border của ô input đó nó đổi sang màu mình muốn */
     border: none;
     height: 34px;
     width: 60px;
-    border-radius: 3px;
+    border-radius: 2px;
     margin-right: 3px;
     outline: none;
 }
@@ -541,7 +548,7 @@ border của ô input đó nó đổi sang màu mình muốn */
     list-style: none;  
     box-shadow: 0 1px 2px #e0e0e0;
     padding-left: 0;
-    border-radius: 3px;
+    border-radius: 2px;
     /* Mặc định ẩn, hover vào mới hiện lên */
     display : none;
     animation: fadeIn ease-in 0.2s;
@@ -571,14 +578,14 @@ border của ô input đó nó đổi sang màu mình muốn */
  hưởng gì phần bo góc */
  /* first child thì bo góc trái phải phía trên */
 .header__search-option-item:first-child {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 /* last child thì bo góc trái phải phía dưới */
 .header__search-option-item:last-child {
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .header__search-option-item:hover {
@@ -603,4 +610,53 @@ border của ô input đó nó đổi sang màu mình muốn */
     display: inline-block;
 }
 
+/* Nghĩa là khi focus vào thẻ input có class 'header__search-input thì thẻ phía sau nó sẽ thực 
+hiện phần css bên trong. Ở đây thì thẻ sau input là thẻ div và có class 'header__search-history */
+/* Ý nghĩa của việc này là để khi focus vào ô input thì vùng lịch sử tìm kiếm sẻ hiện ra.
+Có nhiều cách css selector nên nếu có thời gian thì tham khảo trong W3 school */
+.header__search-input:focus ~ .header__search-history {
+    display: block;
+}
 
+/* Search History Place */
+.header__search-history {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    width: calc(100% - 16px);
+    background-color: var(--white-color);
+    border-radius: 2px;
+    box-shadow: 0 1px 5px #bfbbbb;
+    display: none;
+    overflow: hidden;
+}
+
+
+.header__search-history-heading {
+    margin: 6px 12px;
+
+}
+
+.header__search-histoty-list {
+    padding-left: 0;
+    list-style: none;
+    /* Bỏ margin mặc định của thẻ ul */
+    margin: 6px 0 0;
+}
+
+.header__search-history-item {
+    height: 38px;
+    padding: 0 12px;
+}
+
+.header__search-history-item:hover {
+    background-color: #f9f5f5;
+}
+
+.header__search-history-item a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    /* Cho căn giũa chiều cao thẻ chứa nó */
+    line-height: 38px;
+}
