@@ -32,6 +32,8 @@ html {
     box-sizing: border-box;
 }
 
+
+/* Responsive */
 .grid {
     /* Đặt width 1200px và max-width 100% nhằm mục đích là nếu màn hình lớn hơn 1200px thì max-width tối
     đa nó chỉ là 1200px, nhưng nếu màn hình < 1200px thì max-width nó sẽ giảm kích thước màn hình
@@ -52,7 +54,27 @@ html {
     display: flex;
     /* Nếu độ dài vượt quá grid row này thì tự xuống hàng */
     flex-wrap: wrap;
+
+    margin-left: -12px;
+    margin-right: -12px;
 }
+
+/* Để tạm để Css, sau này responsive thì sẽ sửa lại */
+.grid__column-2 {
+    padding-left: 12px;
+    padding-right: 12px;
+    /* Theo nguyên tắc 12 column grid thì tổng = 100%, 1 cột băng 100%/12 nhưng ở đây nó chiếm 2 cột vậy nên công thức
+    là (100%/12)*2=16.666666666666666. Nhưng ở đây ta làm tròn số thập phân thứ 4 thôi */
+    width: 16.6667%;
+}
+
+.grid__column-10 {
+    padding-left: 12px;
+    padding-right: 12px;
+    /* Cũng như grid column 2, (100%/12)*10=83.3333333333 */
+    width: 83.3334%;
+}
+
 
 /* Animation */
 @keyframes fadeIn {
