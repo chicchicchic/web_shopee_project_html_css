@@ -204,10 +204,116 @@
                             <!-- Bây giờ bỏ class 'header__cart-list--no-cart' để code khi cart có sản phẩm -->
                             <!-- Khi nào cart không có sản phẩm thì mới add class 'header__cart-list--no-cart' vào -->
                             <div class="header__cart-list">
+                                <!-- No item in cart -->
                                 <img src="./assets/img/no_cart.png" alt="" class="header__cart-no-cart-img">
                                 <sapn class="header__cart-list--no-cart-msg">
                                     Chưa có sản phẩm
                                 </sapn>
+
+
+                                <!-- Has item in cart -->
+                                <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
+                                <ul class="header__cart-list-item">
+                                    <!-- Cart item-->
+                                    <li class="header__cart-item">
+                                        <!-- Image of item -->
+                                        <img src="https://img.abaha.vn/photos/resized/320x/73-1574399953-myohui.png" alt="" class="header__cart-img">
+
+                                        <div class="header__cart-item-info">
+                                            <!-- Item Head info -->
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Sơn móng tay Bluewind</h5>
+
+                                                <!-- Thêm 1 thẻ để gói 3 thẻ này lại 1 thẻ chứ không thì space beetween sẽ đẩy hết các thẻ này tách xa nhau, thêm 1 thẻ gói vào để biến 4 cụm ban đầu thành 2 cụm -->
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">3.000.000đ</span>
+                                                    <!-- Dấu x (nhân) -->
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <!-- Số lượng (quantity) -->
+                                                    <span class="header__cart-item-qnt">4</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Item body -->
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Tím
+                                                </span>
+                                                <!-- Nút xóa -->
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <!-- Cart item-->
+                                    <li class="header__cart-item">
+                                        <!-- Image of item -->
+                                        <img src="https://img.abaha.vn/photos/resized/320x/83-1618645481-myphamohui-lgvina.png" alt="" class="header__cart-img">
+
+                                        <div class="header__cart-item-info">
+                                            <!-- Item Head info -->
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Kem dưỡng da Shark</h5>
+
+                                                <!-- Thêm 1 thẻ để gói 3 thẻ này lại 1 thẻ chứ không thì space beetween sẽ đẩy hết các thẻ này tách xa nhau, thêm 1 thẻ gói vào để biến 4 cụm ban đầu thành 2 cụm -->
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">8.000.000đ</span>
+                                                    <!-- Dấu x (nhân) -->
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <!-- Số lượng (quantity) -->
+                                                    <span class="header__cart-item-qnt">2</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Item body -->
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Kem
+                                                </span>
+                                                <!-- Nút xóa -->
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <!-- Cart item-->
+                                    <li class="header__cart-item">
+                                        <!-- Image of item -->
+                                        <img src="https://img.abaha.vn/photos/resized/320x/83-1618642699-myphamohui-lgvina.png" alt="" class="header__cart-img">
+
+                                        <div class="header__cart-item-info">
+                                            <!-- Item Head info -->
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Nước tẩy trang Chicken</h5>
+
+                                                <!-- Thêm 1 thẻ để gói 3 thẻ này lại 1 thẻ chứ không thì space beetween sẽ đẩy hết các thẻ này tách xa nhau, thêm 1 thẻ gói vào để biến 4 cụm ban đầu thành 2 cụm -->
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">7.000.000đ</span>
+                                                    <!-- Dấu x (nhân) -->
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <!-- Số lượng (quantity) -->
+                                                    <span class="header__cart-item-qnt">9</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Item body -->
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Xanh
+                                                </span>
+                                                <!-- Nút xóa -->
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+
+                                <!-- Nút xem giỏ hàng -->
+                                <!-- Cho nó thẻ a vì sau này nhấn vào sang 1 trang khác -->
+                                <a href="#" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a>
                             </div>
                         </div>
 

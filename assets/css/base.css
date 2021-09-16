@@ -116,7 +116,7 @@ html {
 
 /* Button style */
 .btn {
-    min-width: 142px;
+    min-width: 124px;
     height: 34px;
     /* Đề phòng sau này có thẻ a dùng class này nên thêm text decoration: none */
     text-decoration: none;
