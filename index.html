@@ -194,9 +194,23 @@
                         </button>
                     </div>
 
-                    <!-- Cart -->
+                    <!-- Cart layout-->
                     <div class="header__cart">
-                        <i class="header__cart-icon fas fa-shopping-cart"></i>
+                        <!-- Thêm 1 thẻ div bọc hết con trong header__cart để Css cho nó không còn kế thừa hết chiều ngang thẻ cha chứa nó-->
+                        <div class="header__cart-wrap">
+                            <i class="header__cart-icon fas fa-shopping-cart"></i>
+                            <!-- Thông báo số lượng hàng trong cart (nằm cùng với cart icon) -->
+                            <span class="header__cart-notice">3</span>
+                            <!-- Bây giờ bỏ class 'header__cart-list--no-cart' để code khi cart có sản phẩm -->
+                            <!-- Khi nào cart không có sản phẩm thì mới add class 'header__cart-list--no-cart' vào -->
+                            <div class="header__cart-list">
+                                <img src="./assets/img/no_cart.png" alt="" class="header__cart-no-cart-img">
+                                <sapn class="header__cart-list--no-cart-msg">
+                                    Chưa có sản phẩm
+                                </sapn>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
