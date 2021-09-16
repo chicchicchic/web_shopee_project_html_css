@@ -14,12 +14,110 @@
     list-style: none;
     padding-left: 0;
     margin: 4px 0 0 0;
+    display: flex;
 }
 
 .header__navbar-item {
     margin: 0 8px;
     position: relative;
     min-height: 26px;
+}
+
+/* Info of User */
+.header__navbar-user {
+    display: flex;
+    justify-items: center;
+    position: relative;
+}
+
+.header__navbar-user-img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header__navbar-user-name {
+    margin-left: 4px;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.header__navbar-user:hover .header__navbar-user-menu {
+    display: block;
+}
+
+.header__navbar-user-menu {
+    position: absolute;
+    z-index: 1;
+    /* Bỏ padding left mặc định */
+    padding-left: 0;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 160px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    list-style: none;
+    box-shadow: 0 1px 2px #e0e0e0;
+    /* Mặc định ẩn */
+    display: none;
+
+}
+
+/* Làm mũi tên hướng lên tương tự notify */
+.header__navbar-user-menu::before {
+    content: "";
+    /* Giá trị đầu tiên là rộng, giá trị thứ hai là cao */
+    border-width: 20px 30px;
+    /* Kiểu border */
+    border-style: solid;
+    /* Cấu trúc thằng này là 4 mãnh tam giác ghép lại thành hình vuông nên set màu theo thứ tự 
+    top-right-bottom-left, vì ta cần tam giác hướng lên (bottom) nên chỉ thằng bottom cho màu, còn 
+    3 hướng còn lại là màu trong suốt (vô hình) */
+    border-color: transparent transparent var(--white-color) transparent;
+    position: absolute;
+    right: 5px;
+    top: -26px;
+}
+
+/* Tạo phạm vi hover cho User */
+.header__navbar-user-menu::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -14px;
+    right: 0;
+    width: 58%;
+    height: 20px;
+}
+
+/* class 'header__navbar-user-item--separate' để tạo vạch ngăn cách giữa đăng xuất và các chức năng khác */
+.header__navbar-user-item--separate {
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.header__navbar-user-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    padding: 4px 16px;
+    /* Cho thẻ a có tính chất khối thì mới padding được */
+    display: block;
+}
+
+/* Xử lý thẻ a đầu và cuôi vì khi hover vào thì nó chọc ra khỏi cha nó */
+.header__navbar-user-item a:first-child {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.header__navbar-user-item a:last-child {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.header__navbar-user-item a:hover {
+    background-color: #fafafa;
 }
 
 
@@ -36,13 +134,21 @@ phần này sẽ show .header__qr khi hover vào .header__navbar-item--has-qr */
 .header__navbar-item,
 .header__navbar-item-link {
     display: inline-block;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--white-color);
     text-decoration: none;
     font-weight: 300;
 }
 
+.header__navbar-item,
+.header__navbar-item-link,
+.header__navbar-icon-link {
+    display: flex;
+    align-items: center;
+}
+
 .header__navbar-item:hover,
+.header__navbar-icon-link:hover,
 .header__navbar-item-link:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.7);
@@ -67,6 +173,28 @@ phần này sẽ show .header__qr khi hover vào .header__navbar-item--has-qr */
     color: var(--white-color);
     text-decoration: none;
 }
+
+/* Cần select vào thằng icon facebook và margin-leaft 4px cho nó cách chữ kết nối ra */
+/* Vì icon facebook là con thứ 2 trong số 3 thằng con của thẻ cha chứa nó nên nếu dùng first-child, last-child
+ thì sẽ không select được vào thẻ mình mong muốn*/
+ /* nth-child(2) là select vào con thứ 2 của cha chứa nó */
+.header__navbar-icon-link:nth-child(2) {
+    margin-left: 3px;
+}
+
+.header__navbar-icon {
+    font-size: 1.8rem;
+    margin: 0 4px;
+}
+
+.header__navbar-title--no-pointer {
+    cursor: text;
+    color: var(--white-color);
+}
+
+
+
+
 
 /* Header QR Code */
 .header__qr {
@@ -132,20 +260,22 @@ nên trường hợp này ta dùng 1 lớp giả để làm cầu vô hình nố
 /* Header notifycation */
 .header__notify {
     position: absolute;
+    z-index: 1;
     top: 132%;
     right: 0;
     width: 404px;
-    border: 1px solid #D3D3D3;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: var(--white-color);
     cursor: default;
     /* transform-origin để xét trọng tân khi thông báo hiện lên thay vì như mặc định là nó
     chỉ hiện lên mà không có trọng tâm xuất phát, vì animation hiện thông báo của mình là kiểu zoom lên từ 1 điểm */
     /* 100% - 20px nghĩa là để sau này mà chiều rộng hay cao của khung thông báo có thay đổi thì animation nó 
     vẫn hiện đúng điểm trọn tâm đó */
-    /* dùng 'calc(100% - 20px)' nghĩa là chiều rộng của thanh thông báo là 100% thì trừ bớt tầm
-    20px nghĩa là điểm đó cách góc right=0 tầm 20px, và top là phía trên. Tổng hợp của 2 điều này thì
+    /* dùng 'calc(100% - 32px)' nghĩa là chiều rộng của thanh thông báo là 100% thì trừ bớt tầm
+    32px nghĩa là điểm đó cách góc right=0 tầm 32px, và top là phía trên. Tổng hợp của 2 điều này thì
     điểm xuất phát trọng tâm là từ góc phải và từ trên xuống theo hướng xéo  */
-    transform-origin: calc(100% - 20px) top;
+    transform-origin: calc(100% - 32px) top;
     animation: headerNotifyGrowth ease-in 0.2s;
     /* Thêm cái này để nó tối ưu sự thay đổi của đối tượng có thuộc tính này (header__notify), Vì ta dùng 
     animation nên ở đối tượng này có 2 sự thay đổi là opacity, transform nhìn thì nó không có sự khác biệt 
@@ -443,6 +573,14 @@ border của ô input đó nó đổi sang màu mình muốn */
 
 .header__logo {
     width: 200px;
+}
+
+/* Css vào class của logo Shopee để tránh khi sau này có những trình duyệt cũ khi 
+thêm thẻ a bao quanh logo thì nó sẽ có gạch chân */
+.header__logo-link {
+    /* Tránh trình duyệt cũ tạo border xanh xanh xung quanh logo Shopee */
+    color: transparent;
+    text-decoration: none;
 }
 
 .header__logo-img {
@@ -748,7 +886,7 @@ thì làm như sau */
 .header__search-option {
     position: absolute;
     right: 0;
-    top: 120%;
+    top: calc(100% + 3px);
     width: 130px;
     list-style: none;  
     box-shadow: 0 1px 2px #e0e0e0;
